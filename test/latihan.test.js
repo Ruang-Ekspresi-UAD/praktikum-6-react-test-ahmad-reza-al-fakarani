@@ -41,19 +41,28 @@ describe('Counter Component', () => {
     fireEvent.click(resetButton);
     expect(counterValue).toHaveTextContent('0');
   });
+
+  test('does not reset count if it has not been incremented', () => {
+    render(<Counter />);
+    const resetButton = screen.getByTestId('reset-button');
+    const counterValue = screen.getByTestId('counter-value');
+    
+    fireEvent.click(resetButton);
+    expect(counterValue).toHaveTextContent('0');
+  });
 });
 
 describe('Greeting Component', () => {
   test('renders a greeting message with the provided name', () => {
-    render(<Greeting name="John" />);
+    render(<Greeting name="reza" />);
     const greetingMessage = screen.getByTestId('greeting');
-    expect(greetingMessage).toHaveTextContent('Hello, John');
+    expect(greetingMessage).toHaveTextContent('Hello, reza');
   });
 
   test('renders a different greeting message when name changes', () => {
-    render(<Greeting name="Jane" />);
+    render(<Greeting name="Farid" />);
     const greetingMessage = screen.getByTestId('greeting');
-    expect(greetingMessage).toHaveTextContent('Hello, Jane');
+    expect(greetingMessage).toHaveTextContent('Hello, Farid');
   });
 });
 
